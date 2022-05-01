@@ -5,7 +5,7 @@ import fs from 'fs'
 import { Controller, ReduxSaga, Component, Admin } from './controllers/index'
 import { TemplateChoice } from './types'
 
-const choices = fs.readdirSync(`${__dirname}/templates`)
+const choices = fs.readdirSync(`${__dirname}/../templates`)
 const controllers = {
   component: new Component(),
   admin: new Admin(),

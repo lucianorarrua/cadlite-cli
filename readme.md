@@ -4,8 +4,8 @@
 
 # ¿Como agregar un nuevo template?
 
-1. Agregar el template en el directorio `src/templates/` y darle un nombre (p.ej: **myTemplate**)
-2. Dirigirse al archivo `src/types.d.ts` y agregar en el type `TemplateChoice` un string con el nombre del nuevo template. Debe ser igual al nombre de la carpeta que que se agregó en `src/templates/`. 
+1. Agregar el template en el directorio `templates/` y darle un nombre (p.ej: **myTemplate**)
+2. Dirigirse al archivo `src/types.d.ts` y agregar en el type `TemplateChoice` un string con el nombre del nuevo template. Debe ser igual al nombre de la carpeta que que se agregó en `templates/`. 
     ```ts
     export type TemplateChoice = 'admin' | 'component' | ... | 'myTemplate'
     ```

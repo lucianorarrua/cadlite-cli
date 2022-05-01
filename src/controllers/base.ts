@@ -9,7 +9,7 @@ export abstract class Controller<TemplateParams = any> {
 
   abstract processAnswers (this: Controller<TemplateParams>, answers: any): void
 
-  getTemplatePath = (): string => `${__dirname}/../templates/${this.templateName}`
+  getTemplatePath = (): string => `${__dirname}/../../templates/${this.templateName}`
 
   /**
    * Función que se llama al seleccionar este template.
@@ -31,7 +31,7 @@ export abstract class Controller<TemplateParams = any> {
    * @param templateParams - Objeto con los valores a reemplazar en el `template`.
    * @param templatePath - Ruta donde se encuentra el `template` a copiar.
    */
-  createDirectoryContents (newDirname: string, templateParams?: TemplateParams, templatePath = `${__dirname}/../templates/${this.templateName}`): void {
+  createDirectoryContents (newDirname: string, templateParams?: TemplateParams, templatePath = `${__dirname}/../../templates/${this.templateName}`): void {
     const currentDir = process.cwd()
     if (fs.existsSync(`${currentDir}/${newDirname}`)) {
       throw new Error(`Ya existe una carpeta con el nombre ${newDirname} en el directorio actual`)
