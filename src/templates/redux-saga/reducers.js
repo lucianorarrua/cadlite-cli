@@ -1,5 +1,5 @@
-import createReducer from "store/createReducer";
-import * as types from "./types";
+import createReducer from 'store/createReducer'
+import * as types from './types'
 
 const initialState = {
   items: [],
@@ -11,139 +11,139 @@ const initialState = {
   creating: false,
   updating: false,
   finish: undefined,
-  errorMessage: undefined,
-};
+  errorMessage: undefined
+}
 
 export default createReducer(initialState, {
   /* GET BY FILTER */
-  [types.GET_<%= entityName %>](state, action) {
+  [types.GET_<%= entityName %>] (state, action) {
     return {
       ...state,
-      [action?.payload?.autocompletable ? "options" : "items"]: action?.payload?.autocompletable
+      [action?.payload?.autocompletable ? 'options' : 'items']: action?.payload?.autocompletable
         ? []
         : [...state.items],
-      [action?.payload?.autocompletable ? "loadingAuto" : "loading"]: true,
+      [action?.payload?.autocompletable ? 'loadingAuto' : 'loading']: true,
       finish: undefined,
-      errorMessage: undefined,
-    };
+      errorMessage: undefined
+    }
   },
-  [types.GET_<%= entityName %>_FAILED](state, action) {
+  [types.GET_<%= entityName %>_FAILED] (state, action) {
     return {
       ...state,
       loading: false,
-      finish: "ERROR_GET",
-      errorMessage: action.payload,
-    };
+      finish: 'ERROR_GET',
+      errorMessage: action.payload
+    }
   },
-  [types.GET_<%= entityName %>_SUCCESS](state, action) {
+  [types.GET_<%= entityName %>_SUCCESS] (state, action) {
     return {
       ...state,
-      [action?.payload?.autocompletable ? "options" : "items"]: action.payload?.elements || [],
-      [action?.payload?.autocompletable ? "loadingAuto" : "loading"]: false,
-      total: action.payload?.total || 0,
-    };
+      [action?.payload?.autocompletable ? 'options' : 'items']: action.payload?.elements || [],
+      [action?.payload?.autocompletable ? 'loadingAuto' : 'loading']: false,
+      total: action.payload?.total || 0
+    }
   },
   /* GET ALL */
-  [types.GET_ALL_<%= entityName %>S](state, action) {
+  [types.GET_ALL_<%= entityName %>S] (state, action) {
     return {
       ...state,
       loading: true,
       finish: undefined,
-      errorMessage: undefined,
-    };
+      errorMessage: undefined
+    }
   },
-  [types.GET_ALL_<%= entityName %>S_FAILED](state, action) {
+  [types.GET_ALL_<%= entityName %>S_FAILED] (state, action) {
     return {
       ...state,
       loading: false,
-      finish: "ERROR_GET",
-      errorMessage: action.payload,
-    };
+      finish: 'ERROR_GET',
+      errorMessage: action.payload
+    }
   },
-  [types.GET_ALL_<%= entityName %>S_SUCCESS](state, action) {
+  [types.GET_ALL_<%= entityName %>S_SUCCESS] (state, action) {
     return {
       ...state,
       items: action.payload || [],
-      loading: false,
-    };
+      loading: false
+    }
   },
   /* CREATE */
-  [types.SAVE_<%= entityName %>](state, action) {
+  [types.SAVE_<%= entityName %>] (state, action) {
     return {
       ...state,
       creating: true,
-      finish: undefined,
-    };
+      finish: undefined
+    }
   },
-  [types.SAVE_<%= entityName %>_FAILED](state, action) {
+  [types.SAVE_<%= entityName %>_FAILED] (state, action) {
     return {
       ...state,
       creating: false,
-      finish: "ERROR_CREATE",
-      errorMessage: action.payload,
-    };
+      finish: 'ERROR_CREATE',
+      errorMessage: action.payload
+    }
   },
-  [types.SAVE_<%= entityName %>_SUCCESS](state, action) {
+  [types.SAVE_<%= entityName %>_SUCCESS] (state, action) {
     return {
       ...state,
       creating: false,
-      finish: "SUCCESS_CREATE",
-    };
+      finish: 'SUCCESS_CREATE'
+    }
   },
   /* UPDATE */
-  [types.UPDATE_<%= entityName %>](state, action) {
+  [types.UPDATE_<%= entityName %>] (state, action) {
     return {
       ...state,
       updating: true,
-      finish: undefined,
-    };
+      finish: undefined
+    }
   },
-  [types.UPDATE_<%= entityName %>_FAILED](state, action) {
+  [types.UPDATE_<%= entityName %>_FAILED] (state, action) {
     return {
       ...state,
       updating: false,
-      finish: "ERROR_UPDATE",
-      errorMessage: action.payload,
-    };
+      finish: 'ERROR_UPDATE',
+      errorMessage: action.payload
+    }
   },
-  [types.UPDATE_<%= entityName %>_SUCCESS](state, action) {
+  [types.UPDATE_<%= entityName %>_SUCCESS] (state, action) {
     return {
       ...state,
       updating: false,
-      finish: "SUCCESS_UPDATE",
-    };
+      finish: 'SUCCESS_UPDATE'
+    }
   },
   /* DELETE */
-  [types.DELETE_<%= entityName %>](state, action) {
+  [types.DELETE_<%= entityName %>] (state, action) {
     return {
       ...state,
       deleting: true,
-      finish: undefined,
-    };
+      finish: undefined
+    }
   },
-  [types.DELETE_<%= entityName %>_FAILED](state, action) {
+  [types.DELETE_<%= entityName %>_FAILED] (state, action) {
     return {
       ...state,
       deleting: false,
-      finish: "ERROR_DELETE",
-      errorMessage: action.payload,
-    };
+      finish: 'ERROR_DELETE',
+      errorMessage: action.payload
+    }
   },
-  [types.DELETE_<%= entityName %>_SUCCESS](state, action) {
+  [types.DELETE_<%= entityName %>_SUCCESS] (state, action) {
     return {
       ...state,
       deleting: false,
-      finish: "SUCCESS_DELETE",
-    };
+      finish: 'SUCCESS_DELETE'
+    }
   },
   /* CLEAR */
-  [types.CLEAR_STATE](state, action) {
-    return action.payload.clearAll ?
-      initialState :
-      {
+  [types.CLEAR_STATE] (state, action) {
+    return action.payload.clearAll
+      ? initialState
+      : {
         ...state,
         finish: undefined,
-        errorMessage: undefined,
-      };
-  },
-});
+        errorMessage: undefined
+      }
+  }
+})

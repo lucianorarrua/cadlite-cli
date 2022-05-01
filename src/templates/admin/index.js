@@ -1,14 +1,14 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import MissionsList from "./list";
+import React from 'react'
+import { Route } from 'react-router-dom'
+import List from './list'
 
-const Missions = () => {
-  return <Route
-    key={"missions"}
-    exact
-    path="/cadlite/admin/missions"
-    render={() => <MissionsList />}
-  />
-};
-
-export default Missions;
+export default () => {
+  return (
+    <Route
+      key='<%= adminNameKebabCase %>'
+      exact
+      path='/cadlite/admin/<%= adminNameKebabCase %>'
+      render={() => <List />}
+    />
+  )
+}

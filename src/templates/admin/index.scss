@@ -1,68 +1,8 @@
-.mission-admin-cadlite {
-  .message-dialog {
-    padding: 0;
-    text-align: center;
-    .btn-fotter-group {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: space-between;
-      .modal-body {
-        margin: 3% 0;
-      }
-      .btn-cancel {
-        width: 50%;
-        color: var(--text-color-error) !important;
-        border-bottom-right-radius: 0% !important;
-        background: var(--background-color) !important;
-        border: 1px solid var(--bg-color-table-row);
-      }
-      .btn-confirm {
-        width: 50%;
-        color: var(--color-tertiary) !important;
-        border-bottom-left-radius: 0% !important;
-        background: var(--background-color) !important;
-        border: 1px solid var(--bg-color-table-row);
-      }
-    }
-  }
+/* TABLE */
+.<%= adminNameKebabCase %>-cadlite-<%= hash %> {
 
-  .ant-checkbox-group {
-    height: 212px !important;
-    overflow-y: auto !important;
-  }
 }
 /* MODAL-ADD */
-.add-mission-cadlite {
-  .counter-word-suffix {
-    opacity: 0.5;
-  }
-  .messagePassword {
-    margin-top: 1.8em;
-    font-size: 10px;
-  }
+.add-<%= adminNameKebabCase %>-cadlite-<%= hash %> {
 
-  .profile-list-options {
-    .ant-form-item-control {
-      .ant-form-item-control-input {
-        .ant-form-item-control-input-content {
-          overflow-y: auto;
-          max-height: 325px;
-        }
-        .ant-checkbox-wrapper.ant-checkbox-group-item {
-          width: 48%;
-        }
-        .ant-checkbox-input {
-          border-color: rgb(187, 187, 187);
-        }
-        .ant-checkbox-checked .ant-checkbox-inner {
-          background-color: white !important;
-          border-color: rgb(187, 187, 187);
-        }
-        .ant-checkbox-checked .ant-checkbox-inner:after {
-          border-color: var(--color-primary) !important;
-        }
-      }
-    }
-  }
 }
