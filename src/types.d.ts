@@ -4,7 +4,8 @@ export interface ComponentTemplateParams {
   className: string
 }
 export interface ReduxSagaTemplateParams {
-  entityName: string
+  reducerName: string
+  entityNameSnakeCase: string
   hash: string
 }
 export interface AdminTemplateParams {

@@ -23,9 +23,9 @@ export class ReduxSaga extends Controller<ReduxSagaTemplateParams> {
 
   processAnswers (this: ReduxSaga, answers: any): void {
     const reducerNameChoice: string = answers['redux-saga-name']
-    const entityName = convertCamelCaseToSnakeCase(reducerNameChoice).toUpperCase()
+    const entityNameSnakeCase = convertCamelCaseToSnakeCase(reducerNameChoice).toUpperCase()
     const hash = crypto.createHash('md5').update(reducerNameChoice).digest('hex').slice(0, 5)
     /* Agrega los archivos dentro del nuevo directorio con nombre `componentNameChoice` */
-    this.createDirectoryContents('redux-saga', { entityName, hash })
+    this.createDirectoryContents('redux-saga', { reducerName: reducerNameChoice, entityNameSnakeCase, hash })
   }
 }

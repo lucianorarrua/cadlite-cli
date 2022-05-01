@@ -1,7 +1,7 @@
 {
   "name": "cadlite-cli",
-  "version": "1.0.1",
-  "description": "Cadlite CLI",
+  "version": "1.0.2",
+  "description": "CLI para la generación de templates del proyecto CadLite",
   "main": "dist/index.js",
   "bin": {
     "cadlite-cli": "dist/index.js"

@@ -1,11 +1,11 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
 import * as types from './types'
 import * as actions from './actions'
-import api from 'api/cadlite/missions'
+import api from 'api/cadlite/<%= reducerName %>'
 
 function * watchGetFilter () {
   yield takeEvery(
-    types.GET_<%= entityName %>,
+    types.GET_<%= entityNameSnakeCase %>,
     function * (action) {
       try {
         const response = yield call(api.getByFilter, action.payload)
@@ -24,7 +24,7 @@ function * watchGetFilter () {
 
 function * watchGetAll () {
   yield takeEvery(
-    types.GET_ALL_<%= entityName %>S,
+    types.GET_ALL_<%= entityNameSnakeCase %>S,
     function * (action) {
       try {
         const { data } = yield call(api.getAll, action.payload)
@@ -37,7 +37,7 @@ function * watchGetAll () {
 
 function * watchGetById () {
   yield takeEvery(
-    types.GET_<%= entityName %>_BY_ID,
+    types.GET_<%= entityNameSnakeCase %>_BY_ID,
     function * (action) {
       try {
         const { data } = yield call(api.getById, action.payload)
@@ -50,7 +50,7 @@ function * watchGetById () {
 
 function * watchSave () {
   yield takeEvery(
-    types.SAVE_<%= entityName %>,
+    types.SAVE_<%= entityNameSnakeCase %>,
     function * (action) {
       try {
         yield call(api.create, action.payload)
@@ -63,7 +63,7 @@ function * watchSave () {
 
 function * watchUpdate () {
   yield takeEvery(
-    types.UPDATE_<%= entityName %>,
+    types.UPDATE_<%= entityNameSnakeCase %>,
     function * (action) {
       try {
         yield call(api.update, action.payload)
@@ -76,7 +76,7 @@ function * watchUpdate () {
 
 function * watchDelete () {
   yield takeEvery(
-    types.DELETE_<%= entityName %>,
+    types.DELETE_<%= entityNameSnakeCase %>,
     function * (action) {
       try {
         yield call(api.delete, action.payload)
