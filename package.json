@@ -1,6 +1,6 @@
 {
   "name": "cadlite-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CLI para la generación de templates del proyecto CadLite",
   "main": "dist/index.js",
   "bin": {
@@ -12,6 +12,10 @@
     "lint": "ts-standard",
     "build": "tsc",
     "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucianorarrua/cadlite-cli.git"
   },
   "keywords": [],
   "author": "",
