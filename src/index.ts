@@ -1,17 +1,18 @@
-#!/usr/bin/env/ node
-import inquirer from 'inquirer'
+#!/usr/bin/env node
+
+import inquirer, { QuestionCollection } from 'inquirer'
 import fs from 'fs'
-import { Controller, Component } from './controllers/index'
+import { Controller, ReduxSaga, Component } from './controllers/index'
 import { TemplateChoice } from './types'
 
 const choices = fs.readdirSync(`${__dirname}/templates`)
 const controllers = {
   component: new Component(),
   admin: new Component(),
-  reducer: new Component()
+  'redux-saga': new ReduxSaga()
 }
 
-const questions = [
+const questions: QuestionCollection<any> = [
   {
     name: 'template-choice',
     type: 'list',

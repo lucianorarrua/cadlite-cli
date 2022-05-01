@@ -5,7 +5,7 @@ import './index.scss'
 export default function () {
   const { t } = useTranslation('translations')
   return (
-    <div className='PARAM_CLASSNAME'>
+    <div className='<%= className %>'>
       {/*
       DESARROLLAR COMPONENTE
       */}

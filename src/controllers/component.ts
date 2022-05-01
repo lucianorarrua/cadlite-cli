@@ -1,9 +1,10 @@
 import inquirer from 'inquirer'
-import { TemplateChoice } from '../types'
+import { ComponentTemplateParams, TemplateChoice } from '../types'
 import { Controller } from './base'
+import { convertCamelCaseToKebabCase } from '../utils'
 import { lowerCamelCaseValidator } from '../validators'
 
-export class Component extends Controller {
+export class Component extends Controller<ComponentTemplateParams> {
   questions: inquirer.QuestionCollection<any>
   templateName: TemplateChoice
 
@@ -13,7 +14,7 @@ export class Component extends Controller {
       {
         name: 'component-name',
         type: 'input',
-        message: 'Nombre del componente (utilizando camelCase):',
+        message: 'Nombre del componente (utilizando lowerCamelCase):',
         validate: lowerCamelCaseValidator
       }]
     this.templateName = 'component'
@@ -21,13 +22,8 @@ export class Component extends Controller {
 
   processAnswers (this: Component, answers: any): void {
     const componentNameChoice: string = answers['component-name']
-    const templatePath = this.getTemplatePath()
+    const className = convertCamelCaseToKebabCase(componentNameChoice)
     /* Agrega los archivos dentro del nuevo directorio con nombre `componentNameChoice` */
-    this.createDirectoryContents(componentNameChoice)
-    this.replaceValues(templatePath)
-  }
-
-  replaceValues (newContentPath: string): void {
-    console.log('🚀 ~ TODO', newContentPath)
+    this.createDirectoryContents(componentNameChoice, { className })
   }
 }

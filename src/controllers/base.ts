@@ -1,12 +1,13 @@
 import inquirer, { QuestionCollection } from 'inquirer'
 import fs from 'fs'
+import ejs from 'ejs'
 import { TemplateChoice } from '../types'
 
-export abstract class Controller {
+export abstract class Controller<TemplateParams = any> {
   abstract questions: QuestionCollection<any>
   abstract templateName: TemplateChoice
 
-  abstract processAnswers (this: Controller, answers: any): void
+  abstract processAnswers (this: Controller<TemplateParams>, answers: any): void
 
   getTemplatePath = (): string => `${__dirname}/../templates/${this.templateName}`
 
@@ -24,13 +25,17 @@ export abstract class Controller {
   }
 
   /**
-   * Copia todos los archivos de un `template` en un nuevo directorio.
+   * Copia todos los archivos de un `template` en un nuevo directorio. Opcionalmente remplaza los valores de `templateParams` en el template.
    * Es una función recursiva que va recorriendo las carpetas "hijo" y tamibién va copiando su contenido.
    * @param newDirname - Nombre del nuevo directorio donde donde se va a copiar el template.
+   * @param templateParams - Objeto con los valores a reemplazar en el `template`.
    * @param templatePath - Ruta donde se encuentra el `template` a copiar.
    */
-  createDirectoryContents (newDirname: string, templatePath = `${__dirname}/../templates/${this.templateName}`): void {
+  createDirectoryContents (newDirname: string, templateParams?: TemplateParams, templatePath = `${__dirname}/../templates/${this.templateName}`): void {
     const currentDir = process.cwd()
+    if (fs.existsSync(`${currentDir}/${newDirname}`)) {
+      throw new Error(`Ya existe una carpeta con el nombre ${newDirname} en el directorio actual`)
+    }
     /* Crea un directorio con el nombre `componentNameChoice` en la ruta actual */
     fs.mkdirSync(`${currentDir}/${newDirname}`)
     /* Lee los archivos/carpetas del en el templatePath */
@@ -43,14 +48,18 @@ export abstract class Controller {
       const stats = fs.statSync(origFilePath)
       // Si el item es un archivo, lo pega en el directorio newProjectPath
       if (stats.isFile()) {
-        const contents = fs.readFileSync(origFilePath, 'utf8')
+        let contents = fs.readFileSync(origFilePath, 'utf8')
+        // Si hay templateParams, se utiliza la librería `ejs` para remplazar dichos valores en el template.
+        if (templateParams !== null) {
+          contents = ejs.render(contents, templateParams)
+        }
         const writePath = `${currentDir}/${newDirname}/${itemName}`
         fs.writeFileSync(writePath, contents, 'utf8')
         return
       }
       // Si el item es una carpeta, baja un nivel (se mete en la carpeta) y vuelve a llamar a la función desde ahí
       if (stats.isDirectory()) {
-        this.createDirectoryContents(`${newDirname}/${itemName}`, `${templatePath}/${itemName}`)
+        this.createDirectoryContents(`${newDirname}/${itemName}`, templateParams, `${templatePath}/${itemName}`)
       }
     })
   }
