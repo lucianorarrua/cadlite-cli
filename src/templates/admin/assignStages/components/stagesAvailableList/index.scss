@@ -1,0 +1,9 @@
+.stage-available-list-to-assign {
+  padding: 0px 10px;
+  height: 100%;
+  overflow-y: auto;
+  .tree-stage-item-mission-stages {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+}

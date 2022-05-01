@@ -1,0 +1,32 @@
+.assign-stages-to-mission-cadlite {
+  height: 90vh;
+  .ant-modal-content {
+    height: 100% !important;
+    .ant-modal-body {
+      .ant-row {
+        height: 100%;
+        > .ant-col {
+          height: 100%;
+        }
+        .stage-assigned {
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          > .ant-typography {
+            display: block;
+            font-size: calc(var(--body-font-size) * 1.4);
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 17px;
+          }
+        }
+      }
+    }
+    .ant-modal-footer {
+      padding: 10px 24px;
+      button {
+        padding: 0 160px;
+      }
+    }
+  }
+}

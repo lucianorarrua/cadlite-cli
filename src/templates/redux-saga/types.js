@@ -21,3 +21,5 @@ export const GET_ALL_<%= entityName %>S_FAILED = "CAD_LITE_GET_ALL_<%= entityNam
 export const DELETE_<%= entityName %> = "CAD_LITE_DELETE_<%= entityName %>_<%= hash %>";
 export const DELETE_<%= entityName %>_SUCCESS = "CAD_LITE_DELETE_<%= entityName %>_SUCCESS_<%= hash %>";
 export const DELETE_<%= entityName %>_FAILED = "CAD_LITE_DELETE_<%= entityName %>_FAILED_<%= hash %>";
+
+export const CLEAR_STATE = "CAD_LITE_CLEAR_STATE_<%= entityName %>_SUCCESS_<%= hash %>";

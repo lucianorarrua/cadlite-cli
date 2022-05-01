@@ -30,3 +30,5 @@ export const getAllError = payload => result(types.GET_ALL_<%= entityName %>S_FA
 export const deleteRecord = payload => result(types.DELETE_<%= entityName %>, payload);
 export const deleteRecordSuccess = payload => result(types.DELETE_<%= entityName %>_SUCCESS, payload);
 export const deleteRecordError = payload => result(types.DELETE_<%= entityName %>_FAILED, payload);
+
+export const clearState = (payload = {clearAll = false}) => result(types.CLEAR_STATE, payload);

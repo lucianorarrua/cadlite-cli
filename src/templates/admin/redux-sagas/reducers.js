@@ -1,6 +1,8 @@
 import createReducer from "store/createReducer";
 import * as types from "./types";
 
+const DEFAULT_ERROR = "alert.error";
+
 const initialState = {
   items: [],
   total: 0,
@@ -14,9 +16,8 @@ const initialState = {
   errorMessage: undefined,
 };
 
-export default createReducer(initialState, {
-  /* GET BY FILTER */
-  [types.GET_<%= entityName %>](state, action) {
+const MissionReducer = createReducer(initialState, {
+  [types.GET_MISSION](state, action) {
     return {
       ...state,
       [action?.payload?.autocompletable ? "options" : "items"]: action?.payload?.autocompletable
@@ -27,15 +28,15 @@ export default createReducer(initialState, {
       errorMessage: undefined,
     };
   },
-  [types.GET_<%= entityName %>_FAILED](state, action) {
+  [types.GET_MISSION_FAILED](state, action) {
     return {
       ...state,
       loading: false,
       finish: "ERROR_GET",
-      errorMessage: action.payload,
+      errorMessage: action.payload || DEFAULT_ERROR,
     };
   },
-  [types.GET_<%= entityName %>_SUCCESS](state, action) {
+  [types.GET_MISSION_SUCCESS](state, action) {
     return {
       ...state,
       [action?.payload?.autocompletable ? "options" : "items"]: action.payload?.elements || [],
@@ -43,8 +44,7 @@ export default createReducer(initialState, {
       total: action.payload?.total || 0,
     };
   },
-  /* GET ALL */
-  [types.GET_ALL_<%= entityName %>S](state, action) {
+  [types.GET_ALL_MISSIONS](state, action) {
     return {
       ...state,
       loading: true,
@@ -52,30 +52,29 @@ export default createReducer(initialState, {
       errorMessage: undefined,
     };
   },
-  [types.GET_ALL_<%= entityName %>S_FAILED](state, action) {
+  [types.GET_ALL_MISSIONS_FAILED](state, action) {
     return {
       ...state,
       loading: false,
       finish: "ERROR_GET",
-      errorMessage: action.payload,
+      errorMessage: action.payload || DEFAULT_ERROR,
     };
   },
-  [types.GET_ALL_<%= entityName %>S_SUCCESS](state, action) {
+  [types.GET_ALL_MISSIONS_SUCCESS](state, action) {
     return {
       ...state,
       items: action.payload || [],
       loading: false,
     };
   },
-  /* CREATE */
-  [types.SAVE_<%= entityName %>](state, action) {
+  [types.SAVE_MISSION](state, action) {
     return {
       ...state,
       creating: true,
       finish: undefined,
     };
   },
-  [types.SAVE_<%= entityName %>_FAILED](state, action) {
+  [types.SAVE_MISSION_FAILED](state, action) {
     return {
       ...state,
       creating: false,
@@ -83,22 +82,21 @@ export default createReducer(initialState, {
       errorMessage: action.payload,
     };
   },
-  [types.SAVE_<%= entityName %>_SUCCESS](state, action) {
+  [types.SAVE_MISSION_SUCCESS](state, action) {
     return {
       ...state,
       creating: false,
       finish: "SUCCESS_CREATE",
     };
   },
-  /* UPDATE */
-  [types.UPDATE_<%= entityName %>](state, action) {
+  [types.UPDATE_MISSION](state, action) {
     return {
       ...state,
       updating: true,
       finish: undefined,
     };
   },
-  [types.UPDATE_<%= entityName %>_FAILED](state, action) {
+  [types.UPDATE_MISSION_FAILED](state, action) {
     return {
       ...state,
       updating: false,
@@ -106,22 +104,21 @@ export default createReducer(initialState, {
       errorMessage: action.payload,
     };
   },
-  [types.UPDATE_<%= entityName %>_SUCCESS](state, action) {
+  [types.UPDATE_MISSION_SUCCESS](state, action) {
     return {
       ...state,
       updating: false,
       finish: "SUCCESS_UPDATE",
     };
   },
-  /* DELETE */
-  [types.DELETE_<%= entityName %>](state, action) {
+  [types.DELETE_MISSION](state, action) {
     return {
       ...state,
       deleting: true,
       finish: undefined,
     };
   },
-  [types.DELETE_<%= entityName %>_FAILED](state, action) {
+  [types.DELETE_MISSION_FAILED](state, action) {
     return {
       ...state,
       deleting: false,
@@ -129,21 +126,13 @@ export default createReducer(initialState, {
       errorMessage: action.payload,
     };
   },
-  [types.DELETE_<%= entityName %>_SUCCESS](state, action) {
+  [types.DELETE_MISSION_SUCCESS](state, action) {
     return {
       ...state,
       deleting: false,
       finish: "SUCCESS_DELETE",
     };
   },
-  /* CLEAR */
-  [types.CLEAR_STATE](state, action) {
-    return action.payload.clearAll ?
-      initialState :
-      {
-        ...state,
-        finish: undefined,
-        errorMessage: undefined,
-      };
-  },
 });
+
+export default MissionReducer;
