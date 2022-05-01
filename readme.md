@@ -1,6 +1,20 @@
 # Estructura del proyecto
 
 ⚠️⚒️Work in progress ⚠️⚒️
+# Como utilizar el CLI
+
+Instalar el paquete de manera global y luego utilizarlo
+
+```bash
+> npm install -g cadlite-cli
+> cadlite-cli
+```
+
+O bien, directamente mediante npx
+
+```bash
+> npx cadlite-cli
+```
 
 # ¿Como agregar un nuevo template?
 
@@ -61,3 +75,4 @@
 
 - [Creating a project generator with Node](https://medium.com/northcoders/creating-a-project-generator-with-node-29e13b3cd309)
 - [How to build your own project templates using Node CLI and typescript](https://medium.com/@pongsatt/how-to-build-your-own-project-templates-using-node-cli-c976d3109129)
+- [npm | Publicar CLI en (typescript) - Fazt Code (Youtube)](https://www.youtube.com/watch?v=6dHyMdjIW7Q)
