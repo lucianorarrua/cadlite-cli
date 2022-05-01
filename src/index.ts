@@ -2,13 +2,13 @@
 
 import inquirer, { QuestionCollection } from 'inquirer'
 import fs from 'fs'
-import { Controller, ReduxSaga, Component } from './controllers/index'
+import { Controller, ReduxSaga, Component, Admin } from './controllers/index'
 import { TemplateChoice } from './types'
 
 const choices = fs.readdirSync(`${__dirname}/templates`)
 const controllers = {
   component: new Component(),
-  admin: new Component(),
+  admin: new Admin(),
   'redux-saga': new ReduxSaga()
 }
 

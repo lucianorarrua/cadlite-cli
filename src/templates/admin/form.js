@@ -1,10 +1,10 @@
 import { Form, Input } from 'antd'
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import GenericModal from '../components/genericModal'
+import GenericModal from 'cad-lite/Admin/components/genericModal'
 import './index.scss'
 
-const FormUser = ({
+export default ({
   creating,
   updating,
   onClose,
@@ -145,5 +145,3 @@ const FormUser = ({
 
   )
 }
-
-export default FormUser
