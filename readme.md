@@ -6,14 +6,14 @@
 Instalar el paquete de manera global y luego utilizarlo
 
 ```bash
-> npm install -g cadlite-cli
-> cadlite-cli
+> npm install -g etildac-cli
+> etildac-cli
 ```
 
 O bien, directamente mediante npx
 
 ```bash
-> npx cadlite-cli
+> npx etildac-cli
 ```
 
 # ¿Como agregar un nuevo template?
